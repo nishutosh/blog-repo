@@ -1,0 +1,110 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogVlog | {{category.category}}</title>
+    <link rel="stylesheet" href={%static "css/bootstrap.min.css" %}>
+    <link rel="stylesheet" href={%static "css/font-awesome.min.css" %}>
+    <link rel="stylesheet" href={%static "css/main.css" %}>
+    <link rel="stylesheet" href={%static "css/mobile.css" %}>
+</head>
+
+    <header>
+            <nav class="navbar main-navbar navbar-default">
+                  <div class="container-fluid">
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      <a class="navbar-brand" href="index.html">BlogVlog</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="mainNavbar">
+                      <ul class="nav navbar-nav">
+                        {% for category_all in categories %}
+                        {% if category_all == category %}
+                        <li class=""><a class="active" href={%url "category" category.slug_field_category %} class="">{{category_all.category|upper}}</a></li>
+                        {%else%}
+                        <li class=""><a href={%url "category" category.slug_field_category %} class="">{{category_all.category|upper}}</a></li>
+                        {%endif%}
+                        {% endfor %}
+                      </ul>
+                      <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                        <li><a href="html/about.html"><span class="glyphicon glyphicon-map-marker"></span> About</a></li>
+                        <li><a href="html/contact.html"><span class="glyphicon glyphicon-earphone"></span> Contact</a></li>
+                        <li><a href="html/login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href="html/signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </nav>
+    </header>
+
+
+    <div class="container-fluid">
+      <div class="banner">
+        <img src="../images/sports.jpg" alt="">
+      </div>
+
+      <div class="latest-blog-container container-fluid">
+        <h3 class="main-heading">{{category.category|capfirst}} Blogs</h3>
+        <ul class="latest-blog-list">
+          {% for blog in category.blogpost_set.all %}
+          <li class="blog">
+              <a href={%url "blog" pk=blog.id %}>
+            <div class="image">
+                <img src={{blog.img.url}} alt="blog image">
+            </div>
+            <div class="content">
+              <h3 class="heading">{{blog.title}}</h3>
+              <p class="text-content">{{blog.body|slice:"500"}}</p>
+              <a href={%url "blog" pk=blog.id %} class="btn btn-default normal-cta">Read More...</a>
+            </div>
+          </li>
+          {%endfor%}      
+        </ul>
+      </div>
+    </div>
+
+
+    <footer>
+      <div class="container-fluid">
+        <ul class="inline-list">
+          <li>
+            <h4>Site</h4>
+            <ul class="normal-list">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li>
+            <h4>Categories</h4>
+            <ul class="normal-list">
+              <li><a href="tech.html">Tech</a></li>
+              <li><a href="fashion.html">Fashion</a></li>
+              <li><a href="lifestyle.html">Lifestyle</a></li>
+              <li><a href="entertainment.html">Entertainment</a></li>
+              <li><a href="sports.html">Sports</a></li>
+              <li><a href="food.html">Food</a></li>
+            </ul>
+          </li>
+          <li>
+            <h4>User</h4>
+            <ul class="normal-list">
+              <li><a href="login.html">Login</a></li>
+              <li><a href="signup.html">Sign Up</a></li>
+            </ul>
+          </li>
+        </ul>
+        <p>© 2017 BlogVlog</p>
+      </div>
+    </footer>
+         <script src={%static "js/app.js" %}></script>
+         <script src={%static "js/form.js" %}></script>
+</body>
+</html>

@@ -16,9 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index,name="index"),
-    path('category/<name>',categories,name="category")
-]
+    path('category/<slug:name>',categories,name="category"),
+    path('blog/<pk>',Post,name="blog"),
+    path('signin/',RegisterView.as_view(),name="signin")
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
