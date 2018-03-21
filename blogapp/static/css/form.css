@@ -1,0 +1,30 @@
+
+
+.panel .panel-heading
+{
+  background-color: #232F3E;
+  color: white;
+}
+
+.form-container
+{
+  width: 60%;
+  margin: 20px auto;
+  min-height: 300px;
+}
+
+.form-group:last-of-type
+{
+  text-align:center;
+}
+
+input.form-control
+{
+
+}
+
+sup
+{
+  font-size: 16px;
+  font-weight: bold;
+}

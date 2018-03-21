@@ -1,0 +1,184 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogVlog</title>
+    <link rel="stylesheet" href={%static "css/bootstrap.min.css" %}>
+    <link rel="stylesheet" href={%static "css/font-awesome.min.css" %}>
+    <link rel="stylesheet" href={%static "css/main.css" %}>
+    <link rel="stylesheet" href={%static "css/mobile.css" %}>
+    
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body data-title="index">
+    <header>
+            <nav class="navbar main-navbar navbar-default">
+                  <div class="container-fluid">
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      <a class="navbar-brand" href="index.html">BlogVlog</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="mainNavbar">
+                      <ul class="nav navbar-nav">
+                        {% for category in categories %}
+                        <li class=""><a href={%url "category_url" category.slug_field_category } class="">{{category.category}}</a></li>
+                        
+                        {% endfor %}
+                      </ul>
+                      <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                        <li><a href="html/about.html"><span class="glyphicon glyphicon-map-marker"></span> About</a></li>
+                        <li><a href="html/contact.html"><span class="glyphicon glyphicon-earphone"></span> Contact</a></li>
+                        <li><a href="html/login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href="html/signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </nav>
+    </header>
+<!-- 
+    <div class="banner-carousel">
+            <div id="bannerCarousel" class="carousel slide" data-ride="carousel">
+                  
+                  <ol class="carousel-indicators">
+                    <li data-target="#bannerCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#bannerCarousel" data-slide-to="1"></li>
+                    <li data-target="#bannerCarousel" data-slide-to="2"></li>
+                    <li data-target="#bannerCarousel" data-slide-to="3"></li>
+                    <li data-target="#bannerCarousel" data-slide-to="4"></li>
+                    <li data-target="#bannerCarousel" data-slide-to="5"></li>
+                  </ol>
+
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <div class="content" data-image="images/tech-banner.jpg">
+
+                      </div>
+                    </div>
+
+                    <div class="item">
+                      <div class="content" data-image="images/fashion-banner.jpg">
+
+                      </div>
+                    </div>
+
+                    <div class="item">
+                      <div class="content" data-image="images/lifestyle-banner.jpg">
+
+                      </div>
+                    </div>
+                      
+                      <div class="item">
+                      <div class="content" data-image="images/entertainment.png">
+
+                      </div>
+                    </div>
+                      
+                     <div class="item">
+                      <div class="content" data-image="images/sports.jpg">
+
+                      </div>
+                    </div> 
+                      
+                      
+                      <div class="item">
+                      <div class="content" data-image="images/food.jpg">
+
+                      </div>
+                    </div>
+                      
+                  </div>
+
+                 
+                  <a class="left carousel-control" href="#bannerCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="right carousel-control" href="#bannerCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+    </div> -->
+   
+    <div class="categories-list">
+        <div class="container-fluid">
+          <div class="row">
+               {% for category in categories %}
+                <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 category">
+                  <a href="html/tech.html">
+                      <div class="icon">
+                            <i class="fa fa-wrench" aria-hidden="true"></i>
+                      </div>
+                      <div class="content">
+                          <h3>{{category.category}</h3>
+                      </div>
+                  </a>
+                </div>
+                {% endfor %}
+          </div>
+        </div>
+    </div>
+
+    <div class="latest-blog-container container-fluid">
+      <h2 class="main-heading">OUR LATEST BLOGS</h2>
+        <ul class="latest-blog-list">
+          {%for blog in blogs %}
+          <li class="blog">
+            <div class="image">
+                <img src={{ blog.img.url }} alt="blog image">
+            </div>
+            <div class="content">
+              <h3 class="heading">{{blog.title}}</h3>
+              <p class="text-content">{{blog.body}}</p>
+              <a href="#" class="btn btn-default normal-cta">Read More...</a>
+            </div>
+          </li>
+          {% endfor %} 
+        </ul>
+    </div>
+    <footer>
+      <div class="container-fluid">
+        <ul class="inline-list">
+          <li>
+            <h4>Site</h4>
+            <ul class="normal-list">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="html/about.html">About Us</a></li>
+              <li><a href="html/contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li>
+            <h4>Categories</h4>
+            <ul class="normal-list">
+              <li><a href="html/tech.html">Tech</a></li>
+              <li><a href="html/fashion.html">Fashion</a></li>
+              <li><a href="html/lifestyle.html">Lifestyle</a></li>
+              <li><a href="html/entertainment.html">Entertainment</a></li>
+              <li><a href="html/sports.html">Sports</a></li>
+              <li><a href="html/food.html">Food</a></li>
+            </ul>
+          </li>
+          <li>
+            <h4>User</h4>
+            <ul class="normal-list">
+              <li><a href="html/login.html">Login</a></li>
+              <li><a href="html/signup.html">Sign Up</a></li>
+            </ul>
+          </li>
+        </ul>
+        <p>© 2017 BlogVlog</p>
+      </div>
+    </footer>
+        <script src="js/app.js"></script>
+        
+    <script src="js/form.js"></script>
+</body>
+</html>
