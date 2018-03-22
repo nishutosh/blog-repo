@@ -15,3 +15,14 @@ class RegisterForm(forms.Form):
 				raise forms.ValidationError(
 					"Password and confirm Password fields does not match"
 				)
+
+class SignInForm(forms.Form):
+    username=forms.CharField(max_length=50)
+    password=forms.CharField(widget=forms.PasswordInput)
+
+class ContactForm(forms.Form):
+	name=forms.CharField(max_length=50)
+	email=forms.CharField(max_length=50)
+	Contact_no=forms.IntegerField()
+	body=forms.CharField(max_length=600)
+	company=forms.CharField(max_length=100)
