@@ -1,0 +1,305 @@
+#head{
+   font-family: 'Pacifico', cursive;
+   font-size: 34px;
+   padding: 2% 0%;
+}
+.navbuttons{
+	z-index: :10;
+	font-size: 15px;
+	margin: 10px;
+	font-weight: 500;
+	font-family: 'Montserrat', sans-serif;
+	color:grey;
+}
+
+.color-change{
+	color:turquoise;
+}
+#tagline{
+	font-family: 'Sanchez', serif;
+	font-size: 31px;
+}
+
+.box{
+
+	background-color: #303030;
+	color: #e0e0e0;
+	height: 500px;
+	margin-top: 40px;
+}
+#main{
+
+    z-index: :-1;
+	text-align: center;
+	margin-top: 80px;
+}
+#list{
+
+	
+	text-align: right;
+	margin-top: 23px;
+}
+.blog-nav{
+	z-index: 10;
+}
+.inner-navs{
+	z-index: 10;
+	position:absolute;
+	text-align: left;
+	display: none;
+	background-color: whitesmoke;
+	padding: 10px;
+	
+}
+.blogs-nav:hover .inner-navs{
+	display: block;
+
+
+}
+
+.about{
+    margin-top: -20px;
+	font-family: 'Montserrat', sans-serif;
+	font-size:20px;
+}
+.img-box{
+	margin: 0px;
+}
+.blog-title{
+   font-family: 'Montserrat', sans-serif;
+	font-size:30px;
+	margin-top: 50px;
+	font-weight: 700;
+
+}
+.tags-head{
+	margin-bottom: 20px;
+}
+.tags{
+	color: white;
+	background-color:#646464;;
+	padding: 6px;
+	border-radius: 4px;
+	border:1px solid;
+	margin: 9px  4px;
+	font-family: 'Montserrat', sans-serif;
+}
+.content{
+	font-family: 'Sanchez', serif;
+	font-size: 18px;
+	margin-top: 30px;
+}
+.author{
+	font-style: bold;
+	font-size:20px; 
+}
+.content>p{
+	margin-top: 10px;
+}
+#joinus{
+
+	cursor: pointer;
+	width: 20%;
+	margin: 3% auto;
+	font-size: 18px;
+	padding: 11px;
+	background-color: #2d2d2d;
+	color: white;
+	border-radius: 6px;
+}
+#joinus:hover{
+
+	background-color: turquoise;}
+.texttag{
+	margin:30px ;
+}
+
+li>a{
+	color:grey;
+}
+.center-category{
+
+	margin-top:70px;
+	color:#97fff5;
+	font-family: 'Pacifico', cursive;
+	font-size: 105px;
+	margin-bottom: -20px;
+	text-align: center;
+
+
+}
+.forms{
+	text-align: center;
+	align-content: center;
+}
+.form-global{
+	text-align: center;
+	margin-top: -10px;
+	
+}
+.form-global>input{
+	
+	display: block;
+	background-color:transparent;
+	border:0px;
+	font-weight: 100px;
+	color: black;
+	
+	
+	margin: 0 auto;
+	padding: 5px;
+	font-size: 19px;
+	font-family: 'Montserrat', sans-serif;
+	border-radius: 4%;
+	text-align: center;
+
+	
+
+
+}
+
+.form-global>input[type="submit"],.{
+
+	cursor: pointer;
+	width: 20%;
+	margin: 3% auto;
+	font-size: 18px;
+	padding: 11px;
+	background-color: #2d2d2d;
+	color: white;
+	border-radius: 6px;
+	text-align: center;
+}
+.form-global>input[type="submit"]:hover{
+	background-color: turquoise;
+}
+
+
+
+.footer{
+
+	margin-top: 100px;
+	background-color: #202020;
+}
+.footer-box{
+	padding:5%;
+	font-family: 'Montserrat', sans-serif
+}
+.logo-footer{
+	color:whitesmoke;
+	font-family: 'Pacifico', cursive;
+	font-size: 29px;
+}
+.list-head{
+	margin-top: 10px;
+	margin-bottom: 15px;
+	font-weight: 700;
+	font-family: 'Montserrat', sans-serif;
+	font-size:17px;
+}
+.foot{
+     font-weight: 400;
+	font-size: 14px;
+}
+.center{
+   
+	margin-top:70px;
+	text-align: center;
+	font-family: 'Pacifico', cursive;
+	font-size: 30px;
+	
+	
+}
+.comment-box{
+	margin-top: 70px;
+	font-family: 'Sanchez', serif;
+	font-size: 17px;
+}
+.comment-box-inner{
+margin-bottom: 20px;
+}
+
+.comment-box>h3{
+	padding-bottom:  10px;
+	border-bottom: 1px solid #d5d5d5;
+	font-weight: 500;
+	margin-bottom: 20px;
+}
+.user{
+	 margin-bottom: 10px;
+}
+.submit-comment{
+	color: turquoise;
+	border:0px;
+	background-color: transparent;
+	margin-top: 10px;
+
+}
+
+.review-form>h3{
+	font-family: 'Sanchez', serif;
+	font-weight: 500;
+}
+.form-comment>input{
+	height: 100px;
+	
+	
+	width:400px;
+font-family: 'Sanchez', serif;
+}
+.share>h3{
+	font-family: 'Sanchez', serif;
+	font-weight: 500;
+	
+}
+.share{
+	margin-top: 50px;
+}
+
+.trending{
+	font-family: 'Pacifico', cursive;
+	font-size: 20px;
+	font-weight: 700;
+	margin-top: 55px;
+	font-family: 'Montserrat', sans-serif;
+
+}
+.list-element{
+	margin: 15px;
+   font-weight: 700;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px; 
+}
+.upvote{
+	
+
+	border-radius: 100%;
+	height: 50px;
+	width: 50px;
+	color: turquoise;
+	text-align: center;
+	
+	opacity: 0.8;
+	position: fixed;
+	margin: 30px;
+}
+.upvote>p{
+	color:grey;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	font-size: 12px;
+}
+.submit-comment>p{
+	color:grey;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	font-size: 12px;
+}
+a:hover{
+	color:turquoise;
+	text-decoration: none;
+}
+.username{
+	color:black;
+	
+}

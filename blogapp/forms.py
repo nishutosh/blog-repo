@@ -1,12 +1,12 @@
 from django import forms
 
 class RegisterForm(forms.Form):
-	firstname=forms.CharField(max_length=50)
-	lastname=forms.CharField(max_length=50)
-	email=forms.EmailField()
-	username=forms.CharField(max_length=50)
-	password=forms.CharField(widget=forms.PasswordInput)
-	confirm_password=forms.CharField(widget=forms.PasswordInput)
+	firstname=forms.CharField(max_length=50,widget=forms.TextInput(attrs={'placeholder': 'First Name'}))
+	lastname=forms.CharField(max_length=50,widget=forms.TextInput(attrs={'placeholder': 'Last Name'}))
+	email=forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Email'}))
+	username=forms.CharField(max_length=50,widget=forms.TextInput(attrs={'placeholder': 'Username'}))
+	password=forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+	confirm_password=forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Confirm password'}))
 	def clean(self):
 		cleaned_data = super(RegisterForm, self).clean()
 		password= cleaned_data.get("password")
@@ -17,12 +17,11 @@ class RegisterForm(forms.Form):
 				)
 
 class SignInForm(forms.Form):
-    username=forms.CharField(max_length=50)
-    password=forms.CharField(widget=forms.PasswordInput)
+    username=forms.CharField(max_length=50,widget=forms.TextInput(attrs={'placeholder': 'Username'}))
+    password=forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
 
 class ContactForm(forms.Form):
-	name=forms.CharField(max_length=50)
-	email=forms.CharField(max_length=50)
-	Contact_no=forms.IntegerField()
-	body=forms.CharField(max_length=600)
-	company=forms.CharField(max_length=100)
+	name=forms.CharField(max_length=50,widget=forms.TextInput(attrs={'placeholder': 'Name'}))
+	email=forms.CharField(max_length=50,widget=forms.TextInput(attrs={'placeholder': 'Email'}))
+	body=forms.CharField(max_length=600,widget=forms.Textarea(attrs={'placeholder': 'Content'}))
+	company=forms.CharField(max_length=100,widget=forms.TextInput(attrs={'placeholder': 'Company  Name'}))

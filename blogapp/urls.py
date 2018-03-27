@@ -29,5 +29,6 @@ urlpatterns = [
     path('auth/signout/',SignOutView.as_view(),name="signout"),
     path('contact/',ContactView.as_view(),name="contact"),
     path('about/',about,name="about"),
-    path('comment/<pk>',comment,name="comment")
+    path('comment/<pk>',comment,name="comment"),
+    path('upvote/<pk>',upvote,name="upvote")
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

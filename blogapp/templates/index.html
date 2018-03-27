@@ -1,73 +1,33 @@
 {% extends "base.html" %}
-{%block body%}
-    <div class="banner-carousel">
-            <div id="bannerCarousel" class="carousel slide" data-ride="carousel">
-                  
-                  <ol class="carousel-indicators">
-                    {% for category in categories %}
-                    <li data-target="#bannerCarousel" data-slide-to={{category.pk}}></li>
-                    {% endfor %}
-                  </ol>
-
-                  <div class="carousel-inner">
-                    {% for category in categories %}
-                     <div class="item active">
-                      <div class="content" data-image={%url "category" name=category.slug_field_category %}>
-
-                      </div>
-                    </div>
-                        {% endfor %}
-               
-                   
-                      
-                  </div>
-
-                 
-                  <a class="left carousel-control" href="#bannerCarousel" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                  <a class="right carousel-control" href="#bannerCarousel" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </div>
-    </div>    
-    <div class="categories-list">
-        <div class="container-fluid">
-          <div class="row">
-               {% for category in categories %}
-                <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 category">
-                  <a href={%url "category" name=category.slug_field_category %} >
-                      <div class="icon">
-                            <i class="fa fa-wrench" aria-hidden="true"></i>
-                      </div>
-                      <div class="content">
-                          <h3>{{category.category|upper}}</h3>
-                      </div>
-                  </a>
-                </div>
-                {% endfor %}
-          </div>
-        </div>
-    </div>
-
-    <div class="latest-blog-container container-fluid">
-      <h2 class="main-heading">OUR LATEST BLOGS</h2>
-        <ul class="latest-blog-list">
-          {%for blog in blogs %}
-          <li class="blog">
-            <div class="image">
-                <img src={{ blog.img.url }} alt="blog image">
-            </div>
-            <div class="content">
-              <h3 class="heading">{{blog.title}}</h3>
-              <p class="text-content">{{blog.body|slice:":400" }}</p>
-              <a href={% url "blog" blog.pk %} class="btn btn-default normal-cta">Read More...</a>
-            </div>
-          </li>
-          {% endfor %} 
-        </ul>
-    </div>
-    
+{%block title %}
+<title>lorem sum dolor | Home </title>
 {%endblock%}
+{%block body%}
+        <div class="row">
+            <div class="col-md-12">
+              <div id="main">
+                 <h1 id="tagline">We help the world making ita better place</h1>
+                 <p>One question that confuses most of the people at the time they begin their developer career is what the heck is an API. This article is short explaination .
+                 </p>
+                 <div id="joinus">VIEW ALL BLOG</div>
+              </div>
+            </div>
+         </div>
+         <h3 class="center">my favorite pick</h3>
+     <div class="row">
+      {% for blog in favs %}
+            <div class="col-md-4">
+              <a href={%url "blog" pk=blog.id %}>
+                  <div class="box">
+                    <img class="img-responsive" src={{blog.img.url}} >                    
+                      <div class="texttag">
+                 <h3 >{{blog.title}}</h3>
+                 <p >{{blog.body|slice:"200"}}...</p>
+            </div>
+         </div>
+       </a>
+       </div>
+       {%endfor%}
+     </div>
+
+   {%endblock%}

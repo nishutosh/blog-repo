@@ -1,27 +1,23 @@
 {% extends "base.html" %}
-{%block body%}
-    <div class="container-fluid">
-      <div class="banner">
-        <img src="../images/sports.jpg" alt="">
-      </div>
-
-      <div class="latest-blog-container container-fluid">
-        <h3 class="main-heading">{{category.category|capfirst}} Blogs</h3>
-        <ul class="latest-blog-list">
-          {% for blog in category.blogpost_set.all %}
-          <li class="blog">
-              <a href={%url "blog" pk=blog.id %}>
-            <div class="image">
-                <img src={{blog.img.url}} alt="blog image">
-            </div>
-            <div class="content">
-              <h3 class="heading">{{blog.title}}</h3>
-              <p class="text-content">{{blog.body|slice:"500"}}</p>
-              <a href={%url "blog" pk=blog.id %} class="btn btn-default normal-cta">Read More...</a>
-            </div>
-          </li>
-          {%endfor%}      
-        </ul>
-      </div>
-    </div>
+{%block title %}
+<title>lorem sum dolor |  {{category.category|upper}} </title>
 {%endblock%}
+{%block body%}
+      <h3 class="center-category">{{category.category|lower}}  blogs</h3>
+     <div class="row">
+      {% for blog in category.blogpost_set.all %}
+            <div class="col-md-4">
+              <a href={%url "blog" pk=blog.id %}>
+                  <div class="box">
+                    <img class="img-responsive" src={{blog.img.url}} >                    
+                      <div class="texttag">
+                 <h3 >{{blog.title}}</h3>
+                 <p >{{blog.body|slice:"200"}}....</p>
+            </div>
+         </div>
+       </a>
+       </div>
+       {%endfor%}
+     </div>
+
+   {%endblock%}

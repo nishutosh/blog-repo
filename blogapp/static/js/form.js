@@ -162,5 +162,3 @@ function commentFormSubmission(){
     window.location.reload();
 }
 
-form.js
-Displaying form.js.

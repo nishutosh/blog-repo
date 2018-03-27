@@ -1,114 +1,70 @@
 {% extends "base.html" %}
+{%block title %}
+<title>{{blog.title}}</title>
+{%endblock%}
 {%block body%}
-    <div class="container-fluid blog">
-      <h1 class="blog-heading">{{blog.title}}</h1>
-      <h5 class="blog-author"><i class="fa fa-user author-icon"></i>{{blog.author}}</h5>
-      <div class="banner">
-        <img src={{blog.img.url}} alt="">
-      </div>
-
-      <div class="content">
-          <p>
-           The Dallas Cowboys do not play next week, which assures that they will not score four touchdowns at home and lose.
-              
-           <br>
-              
-           It happened last Sunday, when the Los Angeles Rams, mismatched uniforms and all, dominated the second half to win. It happened again Sunday, when Aaron Rodgers pulverized the Cowboys’ souls in his annual display of sorcery at AT&T Stadium.
-              
-           <br>
-              
-           Instead of ending the Cowboys’ season, as he did last January, Rodgers merely ruined their evening by throwing the winning touchdown pass in Green Bay’s 35-31 victory with 11 seconds remaining.
-              
-            <br>
-              
-              Five games into the N.F.L. season, the Packers are 4-1, tied with Philadelphia and Carolina atop the N.F.C. The Cowboys are 2-3, wobbling and listing, two games behind the Eagles in the N.F.C. East, their whole less than the sum of their parts.
-              
-              <br>
-              
-              In Dak Prescott, they have a promising quarterback who against Green Bay played what the man who signs his paychecks, owner Jerry Jones, judged to be his best game with the team. In Ezekiel Elliott, who ran for 85 of his 116 yards in the fourth quarter, they have one of the best running backs in the N.F.L. In DeMarcus Lawrence, they have the league’s leader in sacks.
-              
-              <br>
-              
-              And yet, the Cowboys’ defense has not forced a takeaway in three consecutive games, and it has yielded scores on 14 of 18 possessions – six touchdowns, eight field goals – excluding the Rams’ kneeldown at the end of that game. Dallas’s offense has scored on seven of its last eight first-half possessions across these past two losses but has sputtered after halftime, managing two touchdowns and a field goal. Even when Dallas did score in the second half Sunday, going ahead late by 31-28, it mismanaged the clock.
-              
-              <br>
-              
-              Given 73 seconds and a timeout to guide Green Bay into field-goal range, Rodgers thought it better just to keep on going, to throw for a touchdown and finish the darn thing, and because he is Aaron Rodgers, that is what he does.
-              
-              <br>
-              
-              “Can I say the F word?” said Dallas defensive lineman David Irving, when asked to convey the difficulty of defending Rodgers. Quickly adding, with a chuckle: “That guy is awesome at what he does. It takes everybody to stop one guy.”
-              
-              <br>
-              
-           The bye allows teams to reflect and assess all that has gone wrong and right. The Cowboys are bound to examine a running attack whose early struggles have put more of an onus on Prescott, and a defense that buckles at the game’s pivot points.
-              
-            <br>
-              
-           How the Cowboys perform when they return, on Oct. 22 against the winless 49ers, will help reshape their season. At least they will not score four touchdowns at home and lose. The game is in San Francisco.
+</div>
+   <div class="upvote"><i class="fas fa-chevron-up fa-4x"></i><p>UPVOTE</div>
+   <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+    <h2 class="blog-title">{{blog.title}}</h2>
+      <p class="tags-head">
+        <span class="tags">{{blog.date}}</span>
+        <span class="tags">{{blog.base_category.category}}</span>
+        <span class="tags">{{blog.read_time_minutes}}</span>
+        <span class="tags">{{blog.upvote}}</span></p>
+    <img class="blog-image img-responsive" src={{blog.img.url}}/>
+    <div class="content">
+      <p>{% autoescape off %}
+         {{blog.body}}
+        {% endautoescape %}
+      </p>
+          <strong class="author">By: {{blog.author.author_user.first_name}} {{blog.author.author_user.last_name}}</strong>
+    </div>
+     <div class="comment-box">
+      <h3>Comments</h3>
+       {% for comments in blog.comment_set.all%}
+       <div class="comment-box-inner">
+       <strong class ="user">{{comments.user_commented.first_name}} {{comments.user_commented.last_name}} <i class="far fa-comment"></i></strong>
+          <p class="comment">{{comments.body}}
           </p>
+          </div >
+          {%endfor%}
       </div>
-      {% if blog.comment_set.all %}
-      <div class="review-container">
-        <h3>Reader's Comments</h3>
-        {% for comment in blog.comment_set.all %}
-        <div class="review">
-          <p>{{comment.user.username}}</p>
-          <div class="text">
-            <p>{{comment.body}}</p>
-          </div>
-        </div>
-        {%endfor%}
-      </div>
-      {%endif%}
-      <div class="about-author">
-
-            <div class="image">
-                <img src={{blog.author.img.url}} alt="">
-            </div>
-            <div class="info">
-                <h3>{blog.author.author_user.first_name}}</h3>
-                <p>{{blog.author.description}}
-                </p>
-            </div>
-      </div>
-        <div class="review-form">
-        <h3>Leave us a comment!</h3>
-       {% if user.is_authenticated %}
+           <div class="review-form">
+        <h3>Leave us a comment</h3>
+        {% if user.is_authenticated %}
        <div class="form-container">
-          <form class="form-horizontal" action={%url "comment" blog.pk %} method="post" id="commwntForm">
-              <div class="form-group">
-                <label class="control-label col-sm-3" for="pwd">Name:</label>
-                <div class="col-sm-8">
+          <form class="form-comment" action={%url "comment" blog.pk %} method="post" id="commentForm">  
+             {% csrf_token %}
                   <input type="text" name="body" class="form-control" id="name" placeholder="Comment">
-                </div>
-                <div class="col-sm-8">
-                  <input type="submit" value="submit">
-                </div>
-              </div>              
+               <button type="submit" class="submit-comment"><i class="fab fa-telegram-plane fa-5x"></i><p>COMMENT</button>
+             
+                          
             </form>
         </div>
-      </div>
-
-                      
-
-
         {%else%}
            <a href={%url "signin" %} class="btn btn-default normal-cta">Login</a>
 
                        
         {%endif%}
-       <div class="share-widgets">
-        <h3>Share this blog!</h3>
-        <!--Fb share button-->
-          <a class="socialnettag" href='https://twitter.com/intent/tweet?url={%url "blog" blog.pk %}'>Twitter</a>
-          <a class="socialnettag"  href='https://www.facebook.com/sharer/sharer.php?u={%url "blog" blog.pk }'>Facebook</a>
-<ul >
       </div>
+    </div>
+    <div class="col-md-4 list-box">
+      <h3 class="trending">Trending blogs</h3>
+      <ul class="list-unstyled treding">
+        {%for blogs in trending%}
+         <li class="list-element">
+          <i class="fas fa-chevron-right"></i> {{blogs.title}}
+         </li>
+         {%endfor%}
+      </ul>
 
 
 
     </div>
-
-{%endblock%}
-        
+   </div>
+  </div>
+ </div>
+  {%endblock%}
