@@ -15,11 +15,11 @@
   <body>
     <div class="container">
       <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-5">
                <div id="head">lorem <span class="color-change">sum</span> dolor 
                </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-7">
               <div id="list">
                   <ul class="list-inline list-unstyled">
                     <li class="navbuttons"><a href={%url "index" %}>Home</a></li>
@@ -36,6 +36,12 @@
                     </li>
                     <li class="navbuttons"><a href={%url "about" %}>About</a></li>
                      <li class="navbuttons"><a href={%url "contact" %}>Contact</a></li>
+                     {% if user.is_authenticated %}
+                     <li class="navbuttons">Hi, {{user.first_name}}  {{user.last_name}}</li>
+                     <li class="navbuttons"><a href={%url "signout" %}>Signout</a></li>
+
+
+                    {%endif%}
                   </ul>
               </div>
             </div> 
@@ -86,6 +92,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <script src={%static "js/main.js" %}></script>
   </body>
 </html>
